@@ -39,8 +39,7 @@ public class WebController {
 
     //Admin Access
     @GetMapping("/getAllUsers")
-    public ResponseEntity<?> getAllUsers(@RequestBody Tasks task,
-                                       @RequestHeader(name = "Authorization") String token) {
+    public ResponseEntity<?> getAllUsers(@RequestHeader(name = "Authorization") String token) {
         Boolean isAdmin = jwtTokenUtil.isAdminFromToken(token);
         if (!isAdmin) {
             return new ResponseEntity<>("You need to have Admin access.",
